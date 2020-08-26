@@ -1,0 +1,56 @@
+<h4>Formularios <small> (reactivo) </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="guardar()">
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+                <small *ngIf="nombreNoValido" class="text-danger">Ingrese al menos 4 letras</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [class.is-invalid]="apellidoNoValido">
+                <small *ngIf="apellidoNoValido" class="text-danger">Ingrese al menos 4 letras</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-8">
+            <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [class.is-invalid]="correoNoValido">
+            <small *ngIf="correoNoValido" class="text-danger">El correo ingresado no es válido</small>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<hr>
+
+<pre>
+    Estado del formulario: {{formulario.valid}}
+    <br>    
+    STATUS: {{formulario.status}}
+</pre>
+
+<pre>
+    {{formulario.value | json}}
+</pre>
